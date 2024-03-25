@@ -1,0 +1,27 @@
+body{
+    height: 100vh;
+    background-image: url(thumbnail\ fingerprint\ texture\ background.jpg);
+    background-size: cover;
+}
+
+.container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.verificador{
+    width: 40%;
+    background-color: #fff;
+    padding: 50px;
+    border: 3px solid purple;
+    border-radius: 30px;
+   display: grid;
+   place-items: center;
+}
+
+#cpfInput{
+    width: 300px;
+}

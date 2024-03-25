@@ -3,8 +3,9 @@ function validarCPF(cpf) {
     cpf = cpf.replace(/[^\d]+/g, '');
     if (cpf == '') return false;
   
-    // Elimina CPFs invalidos conhecidos
-    if (cpf.length != 11 ||
+    // Elimina CPFs inválidos conhecidos
+    if (
+      cpf.length != 11 ||
       cpf == "00000000000" ||
       cpf == "11111111111" ||
       cpf == "22222222222" ||
@@ -14,28 +15,36 @@ function validarCPF(cpf) {
       cpf == "66666666666" ||
       cpf == "77777777777" ||
       cpf == "88888888888" ||
-      cpf == "99999999999")
+      cpf == "99999999999"
+    ) {
       return false;
+    }
   
     // Valida 1o digito
     var add = 0;
-    for (var i = 0; i < 9; i++)
+    for (var i = 0; i < 9; i++) {
       add += parseInt(cpf.charAt(i)) * (10 - i);
+    }
     var rev = 11 - (add % 11);
-    if (rev == 10 || rev == 11)
+    if (rev == 10 || rev == 11) {
       rev = 0;
-    if (rev != parseInt(cpf.charAt(9)))
+    }
+    if (rev != parseInt(cpf.charAt(9))) {
       return false;
+    }
   
     // Valida 2o digito
     add = 0;
-    for (i = 0; i < 10; i++)
+    for (i = 0; i < 10; i++) {
       add += parseInt(cpf.charAt(i)) * (11 - i);
+    }
     rev = 11 - (add % 11);
-    if (rev == 10 || rev == 11)
+    if (rev == 10 || rev == 11) {
       rev = 0;
-    if (rev != parseInt(cpf.charAt(10)))
+    }
+    if (rev != parseInt(cpf.charAt(10))) {
       return false;
+    }
   
     return true;
   }
@@ -46,16 +55,18 @@ function validarCPF(cpf) {
   }
   
   // Função para verificar CPF ao clicar no botão
-  document.getElementById('verifyBtn').addEventListener('click', function() {
-    var cpfInput = document.getElementById('cpfInput').value;
-    var resultElement = document.getElementById('result');
+  document.getElementById("verifyBtn").addEventListener("click", function () {
+    var cpfInput = document.getElementById("cpfInput").value;
+    var resultElement = document.getElementById("result");
   
     if (validarCPF(cpfInput)) {
-      resultElement.textContent = 'CPF válido: ' + formatarCPF(cpfInput);
-      resultElement.className = 'text-success';
+      resultElement.innerHTML = 'CPF válido: <strong>' + formatarCPF(cpfInput) + '</strong>';
+      resultElement.classList.remove("text-danger");
+      resultElement.classList.add("text-success");
     } else {
-      resultElement.textContent = 'CPF inválido';
-      resultElement.className = 'text-danger';
+      resultElement.innerHTML = '<strong>CPF inválido</strong>';
+      resultElement.classList.remove("text-success");
+      resultElement.classList.add("text-danger");
     }
   });
   

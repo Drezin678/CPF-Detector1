@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="ptbr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verificador de CPF</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
+    <div class="verificador">
     <h1>Verificador de CPF</h1>
     <div class="form-group">
       <label for="cpfInput">Digite o CPF:</label>
-      <input type="text" class="form-control" id="cpfInput" placeholder="Digite o CPF">
+      <input type="number" class="form-control" id="cpfInput" placeholder="Digite o CPF">
     </div>
     <button type="button" class="btn btn-primary" id="verifyBtn">Verificar CPF</button>
-    <p id="result"></p>
+    <p id="result" class="mt-3"></p>
+</div>
   </div>
   <script src="script.js"></script>
 </body>
